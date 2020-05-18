@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <table class="table">
+            <tbody>
+                <tr>
+                <th scope="row">Police Station Name:</th>
+                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Username:</th>
+                <td>@{{ user.username }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Email:</th>
+                <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Address:</th>
+                <td>{{ user.profile.address }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Incharge Name:</th>
+                <td>{{ user.profile.incharge_name }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Contact Number:</th>
+                <td>{{ user.profile.phone_number }}</td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

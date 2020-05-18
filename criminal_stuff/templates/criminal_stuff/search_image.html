@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+  {% if form %}
+  <div class="col-sm-12 col-lg-4 mr-auto ml-auto border p-4">
+
+    <form class="form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% bootstrap_form form %}
+        
+        
+        {% buttons %}
+        <button type="submit" class="btn btn-success">Search</button>
+        {% endbuttons %}
+    </form>
+</div>
+{% endif %}
+{% if sorry %}
+  <h3>The Image you searched for seems to be a new criminal. </h3>
+{% elif criminal %}
+  <img class="img-fluid" src="{{criminal.image.url}}" alt="" style="display: block;
+  max-width:500px;
+  max-height:206px;
+  width: auto;
+  height: auto;">
+  <br>
+  <table class="table">
+            <tbody>
+                <tr>
+                <th scope="row">Name:</th>
+                <td>{{ criminal.name }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Address:</th>
+                <td>{{ criminal.address }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Pin Code:</th>
+                <td>{{ criminal.pin_code }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Phone Number</th>
+                <td>{{ criminal.phone_number }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Crime Category:</th>
+                <td>{{ criminal.crime_category }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Booked On</th>
+                <td>{{ criminal.booked_on }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Booked At Police Station:</th>
+                <td>{{ criminal.booked_at_police_station }}</td>
+                </tr>
+                <tr>
+                <th scope="row">Crime Description</th>
+                <td>{{ criminal.crime_description }}</td>
+                </tr>
+                
+                
+            </tbody>
+        </table>
+{% endif %}
+{% endblock content %}

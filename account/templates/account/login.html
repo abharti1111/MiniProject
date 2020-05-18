@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="col col-lg-9" style="padding-left: 150px;">
+	<h1 class="text-center">Log In</h1>
+	<br>
+	<form method="POST">
+		{% csrf_token %}
+		{% bootstrap_form form layout='horizontal'%}
+    {% buttons %}
+		<button type="submit" class="btn btn-default">
+		Submit
+		</button>
+  	{% endbuttons %}
+	</form>
+	<br>
+</div>
+{% endblock %}

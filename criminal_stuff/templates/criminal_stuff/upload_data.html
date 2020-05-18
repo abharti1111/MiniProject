@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+  {% if form %}
+  <div class="col col-lg-9" style="padding-left: 150px;">
+
+    <form class="form" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {% bootstrap_form form layout='horizontal' %}
+        
+        
+        {% buttons %}
+        <button type="submit" class="btn btn-success">submit</button>
+        {% endbuttons %}
+    </form>
+</div>
+{% endif %}
+{% endblock content %}

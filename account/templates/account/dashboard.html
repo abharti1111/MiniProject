@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="jumbotron">
+        
+        {% if user.is_authenticated %}
+            <h1>Welcome {{user.username}}!!</h1>
+        {% else %}
+            <h1>Criminal Database</h1>
+        {% endif %}
+        <p>Here you can search for criminals who have a previous criminal history just only by using his/her facial image.  </p>
+        <p>
+          
+          {% if user.is_authenticated %}
+            <a class="btn btn-lg btn-primary" href="{% url 'search' %}" role="button"> Search an Image  &raquo;</a>
+            <a class="btn btn-lg btn-primary" href="{% url 'add' %}" role="button" > Upload New Data &raquo;</a>
+        {% else %}
+            <a class="btn btn-lg btn-primary" href="{% url 'login' %}" role="button"> Login Now &raquo;</a>
+        {% endif %}
+        </p>
+    </div>
+{% endblock content %}
+    

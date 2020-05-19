@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+    
+    {% if messages %}
+        <ul class="alert-success">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}><h4>{{ message }}</h4></li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     <div class="jumbotron">
         
         {% if user.is_authenticated %}

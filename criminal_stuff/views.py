@@ -7,13 +7,17 @@ from django.views.generic import ( DetailView,
                                 ListView,
 
                                 )
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import SearchForm
 from .models import Criminal
 import numpy as np
 from .face_rec import encode_face,resolve_image
+from django.contrib.messages.views import SuccessMessageMixin
 # Create your views here.
 
+
+@login_required
 def search_result(request):
     if request.method == "POST":
         form = SearchForm(request.POST,request.FILES)
@@ -37,13 +41,14 @@ def search_result(request):
     return render(request,'criminal_stuff/search_image.html',{'form':form})
 
 
-class CreateCriminalStuff(LoginRequiredMixin,CreateView):
+class CreateCriminalStuff(SuccessMessageMixin,LoginRequiredMixin,CreateView):
     model = Criminal
     fields = ['name', 'address', 'pin_code', 'phone_number', 'crime_category', 'crime_description',
             'image'
         ]
     template_name = 'criminal_stuff/upload_data.html'
     success_url = '/'
+    success_message = "New data was uploaded successfully"
     def form_valid(self, form):
         form.instance.booked_at_police_station = self.request.user
         form.instance.image_data = list(encode_face(form.instance.image))

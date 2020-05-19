@@ -81,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'divya_dristi',
         'USER': 'dbuser',
-        'PASSWORD': '***************',
+        'PASSWORD': 'Avinash@99',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -112,7 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE =  'Asia/Kolkata'
 
 USE_I18N = True
 
